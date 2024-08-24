@@ -1,25 +1,39 @@
-// src/pages/Dashboard.js
 import React, { useEffect, useState } from 'react';
-import { auth } from "../../firebase.config";
+import { auth } from '../../firebase.config';
 import { useNavigate } from 'react-router-dom';
 
 function Dashboard() {
   const navigate = useNavigate();
-  const [userEmail, setUserEmail] = useState('');
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
-    if (auth.currentUser) {
-      setUserEmail(auth.currentUser.email);
-    } else {
-      navigate('/');
-    }
+    const unsubscribe = auth.onAuthStateChanged((currentUser) => {
+      if (currentUser) {
+        setUser(currentUser);
+      } else {
+        navigate('/');
+      }
+    });
+
+    // Cleanup the subscription on unmount
+    return () => unsubscribe();
   }, [navigate]);
+
+  const handleSignOut = () => {
+    auth.signOut().then(() => {
+      navigate('/');
+    }).catch((error) => {
+      console.error("Error signing out:", error);
+    });
+  };
+
+  if (!user) return null;
 
   return (
     <div>
       <h1>You successfully logged in!</h1>
-      {userEmail && <p>Welcome, {userEmail}!</p>}
-      <button>Log Out</button>
+      <p>Welcome, {user.email}!</p>
+      <button onClick={handleSignOut}>Sign Out</button>
     </div>
   );
 }
