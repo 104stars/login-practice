@@ -1,15 +1,27 @@
-// src/pages/Login.js
 import React from 'react';
 import { signInWithPopup } from "firebase/auth";
-import { auth, provider } from '../firebaseConfig';
+import { auth, provider } from "../../firebase.config";
 import { useNavigate } from 'react-router-dom';
+import UserDAO from '../dao/UserDAO';
 
 function Login() {
   const navigate = useNavigate();
 
   const handleLogin = async () => {
     try {
-      await signInWithPopup(auth, provider);
+      const result = await signInWithPopup(auth, provider);
+      
+      // Use the DAO to add user data to Firestore
+      const user = {
+        uid: result.user.uid,
+        email: result.user.email,
+        displayName: result.user.displayName,
+        photoURL: result.user.photoURL,
+        createdAt: new Date(),
+      };
+      await UserDAO.createUser(user);
+
+      // Redirect to the dashboard
       navigate('/dashboard');
     } catch (error) {
       console.error("Login Failed:", error);
