@@ -3,6 +3,7 @@ import { signInWithPopup, onAuthStateChanged } from "firebase/auth";
 import { auth, provider } from "../../firebase.config";
 import { useNavigate } from 'react-router-dom';
 import UserDAO from '../dao/UserDAO';
+import './Login.css'; // Import the CSS file
 
 function Login() {
   const navigate = useNavigate();
@@ -42,9 +43,13 @@ function Login() {
   };
 
   return (
-    <div>
-      <h1>Login Page</h1>
-      <button onClick={handleLogin}>Login with Google</button>
+    <div className="login-container">
+      <h1>Welcome</h1>
+      <h2>Get started</h2>
+      <button onClick={handleLogin} className='google-button'>
+        <img src="src/assets/images/google.svg" alt="" className='google-logo' />
+        Login with Google
+        </button>
     </div>
   );
 }

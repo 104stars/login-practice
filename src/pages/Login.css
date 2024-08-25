@@ -1,0 +1,65 @@
+/* src/pages/Login.css */
+.login-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+   /* Set width to 100% of the viewport width */
+    height: 100vh;
+   /* Set height to 100% of the viewport height */
+    background-image: url('../assets/images/background.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+h1 {
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+   /* Bold font weight */
+}
+h2 {
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+   /* Light font weight */
+}
+/* To prevent image dragging and selection */
+body {
+    -webkit-user-select: none;
+   /* Safari */
+    -moz-user-select: none;
+   /* Firefox */
+    -ms-user-select: none;
+   /* Internet Explorer/Edge */
+    user-select: none;
+   /* Non-prefixed version, currently supported by Chrome, Opera, and Edge */
+}
+.google-button {
+    display: flex;
+    align-items: center;
+    padding: 5px 20px;
+    font-size: 16px;
+    margin-top: 20px;
+    cursor: pointer;
+    border-radius: 100px;
+    border: 1px solid #ffffff;
+   /* Added border width */
+    background-color: #9292921f;
+    color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.google-button:hover {
+    border-color: #ff6bf8;
+   /* Change border color on hover */
+    box-shadow: 0px 0px 15px 5px rgba(255, 29, 153, 0.685);
+   /* Glowing effect */
+}
+.google-logo{
+    width: 50px;
+    margin-right: 10px;
+}
