@@ -47,7 +47,7 @@ function Login() {
       <h1>Welcome</h1>
       <h2>Get started</h2>
       <button onClick={handleLogin} className='google-button'>
-        <img src="src/assets/images/google.svg" alt="" className='google-logo' />
+        <img src="/google.svg" alt="" className='google-logo' />
         Login with Google
         </button>
     </div>
