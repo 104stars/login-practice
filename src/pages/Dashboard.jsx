@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { auth } from '../../firebase.config';
 import { useNavigate } from 'react-router-dom';
 
+
 function Dashboard() {
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
@@ -31,8 +32,8 @@ function Dashboard() {
 
   return (
     <div>
-      <h1>You successfully logged in!</h1>
-      <p>Welcome, {user.email}!</p>
+      <h1>You have successfully logged in!</h1>
+      <p>Welcome, {user.displayName.toLowerCase()}!</p>
       <button onClick={handleSignOut}>Sign Out</button>
     </div>
   );

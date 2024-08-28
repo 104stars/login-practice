@@ -45,7 +45,7 @@ function Login() {
   return (
     <div className="login-container">
       <h1>Welcome</h1>
-      <h2>Get started</h2>
+      <h2>Get started here</h2>
       <button onClick={handleLogin} className='google-button'>
         <img src="/google.svg" alt="" className='google-logo' />
         Login with Google
